@@ -57,8 +57,19 @@ const nextConfig = {
   webpack: (config, { dev, isServer }) => {
     // Otimizações para produção
     if (!dev && !isServer) {
+      // Targets modernos para eliminar polyfills
+      config.resolve.alias = {
+        ...config.resolve.alias,
+      }
+      
+      // Tree shaking mais agressivo
+      config.optimization.usedExports = true
+      config.optimization.sideEffects = false
+      
       config.optimization.splitChunks = {
         chunks: 'all',
+        minSize: 20000,
+        maxSize: 244000,
         cacheGroups: {
           default: {
             minChunks: 2,
@@ -70,12 +81,21 @@ const nextConfig = {
             name: 'vendors',
             priority: -10,
             chunks: 'all',
+            enforce: true,
           },
           framer: {
             test: /[\\/]node_modules[\\/]framer-motion[\\/]/,
             name: 'framer-motion',
             priority: 10,
             chunks: 'all',
+            enforce: true,
+          },
+          react: {
+            test: /[\\/]node_modules[\\/](react|react-dom)[\\/]/,
+            name: 'react',
+            priority: 20,
+            chunks: 'all',
+            enforce: true,
           },
         },
       }

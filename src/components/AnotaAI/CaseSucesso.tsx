@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { Star, Play, Users, TrendingUp } from 'lucide-react'
 
 const AnotaAICaseSucesso = () => {
@@ -12,6 +12,32 @@ const AnotaAICaseSucesso = () => {
   })
   
   const [videoLoaded, setVideoLoaded] = useState(false)
+  const [thumbnailLoaded, setThumbnailLoaded] = useState(false)
+  const thumbnailRef = useRef<HTMLDivElement>(null)
+
+  // Intersection Observer para carregar thumbnail apenas quando necessário
+  useEffect(() => {
+    if (!thumbnailRef.current) return
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !thumbnailLoaded) {
+            setThumbnailLoaded(true)
+            observer.disconnect()
+          }
+        })
+      },
+      { 
+        rootMargin: '50px',
+        threshold: 0.1 
+      }
+    )
+
+    observer.observe(thumbnailRef.current)
+
+    return () => observer.disconnect()
+  }, [thumbnailLoaded])
 
   return (
     <section className="py-20 bg-white relative overflow-hidden" ref={ref}>
@@ -140,14 +166,28 @@ const AnotaAICaseSucesso = () => {
             {/* Video Embed with Lazy Loading */}
             <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
               {!videoLoaded ? (
-                <div className="absolute top-0 left-0 w-full h-full rounded-xl bg-gray-200 flex items-center justify-center cursor-pointer group" onClick={() => setVideoLoaded(true)}>
-                  {/* Thumbnail */}
-                  <div className="relative">
-                    <img
-                      src="https://img.youtube.com/vi/LoNL5NOozyk/maxresdefault.jpg"
-                      alt="Thumbnail do vídeo"
-                      className="w-full h-full object-cover rounded-xl"
-                    />
+                <div 
+                  ref={thumbnailRef}
+                  className="absolute top-0 left-0 w-full h-full rounded-xl bg-gray-200 flex items-center justify-center cursor-pointer group" 
+                  onClick={() => setVideoLoaded(true)}
+                >
+                  {/* Thumbnail com lazy loading */}
+                  <div className="relative w-full h-full">
+                    {thumbnailLoaded ? (
+                      <img
+                        src="https://img.youtube.com/vi/LoNL5NOozyk/maxresdefault.jpg"
+                        alt="Thumbnail do vídeo"
+                        className="w-full h-full object-cover rounded-xl"
+                        loading="lazy"
+                      />
+                    ) : (
+                      <div className="w-full h-full bg-gradient-to-br from-gray-300 to-gray-400 rounded-xl flex items-center justify-center">
+                        <div className="text-gray-600 text-center">
+                          <Play className="w-16 h-16 mx-auto mb-2 opacity-50" />
+                          <p className="text-sm">Carregando vídeo...</p>
+                        </div>
+                      </div>
+                    )}
                     {/* Play Button Overlay */}
                     <div className="absolute inset-0 flex items-center justify-center">
                       <motion.div
@@ -160,7 +200,7 @@ const AnotaAICaseSucesso = () => {
                     </div>
                     {/* Loading indicator */}
                     <div className="absolute top-4 right-4 bg-black/70 text-white px-3 py-1 rounded-full text-sm">
-                      Clique para carregar
+                      {thumbnailLoaded ? 'Clique para carregar' : 'Carregando...'}
                     </div>
                   </div>
                 </div>
