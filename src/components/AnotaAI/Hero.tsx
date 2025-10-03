@@ -97,11 +97,11 @@ const AnotaAIHero = () => {
         />
       </div>
 
-      <div className="mx-auto pl-24 pr-16 relative z-10" style={{ maxWidth: '100%' }}>
-        <div className="grid grid-cols-1 lg:grid-cols-2 items-center" style={{ gap: '24px' }}>
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-8 lg:gap-12">
           {/* Left Column - Content */}
           <motion.div
-            className="space-y-8 pr-8"
+            className="space-y-6 lg:space-y-8 lg:pr-8"
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -119,7 +119,7 @@ const AnotaAIHero = () => {
 
             {/* Main Headline */}
             <motion.h1
-              className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
@@ -133,7 +133,7 @@ const AnotaAIHero = () => {
 
             {/* Subheadline */}
             <motion.p 
-              className="text-xl text-gray-300 leading-relaxed"
+              className="text-lg sm:text-xl text-gray-300 leading-relaxed"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.8 }}
@@ -152,7 +152,7 @@ const AnotaAIHero = () => {
                   const form = document.querySelector('form');
                   if (form) form.scrollIntoView({ behavior: 'smooth', block: 'center' });
                 }}
-                className="relative bg-gradient-to-r from-yellow-400 to-yellow-500 hover:from-yellow-500 hover:to-yellow-600 text-blue-900 font-bold py-4 px-8 rounded-xl text-lg shadow-2xl transition-all duration-300 overflow-hidden group"
+                className="relative bg-gradient-to-r from-yellow-400 to-yellow-500 hover:from-yellow-500 hover:to-yellow-600 text-blue-900 font-bold py-3 px-6 sm:py-4 sm:px-8 rounded-xl text-base sm:text-lg shadow-2xl transition-all duration-300 overflow-hidden group w-full sm:w-auto"
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -179,7 +179,7 @@ const AnotaAIHero = () => {
 
             {/* Stats */}
             <motion.div 
-              className="grid grid-cols-2 gap-6 pt-8"
+              className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 pt-6 sm:pt-8"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1.2 }}
@@ -189,7 +189,7 @@ const AnotaAIHero = () => {
                 return (
                   <motion.div
                     key={index}
-                    className="text-center bg-white/10 backdrop-blur-sm rounded-2xl p-4 border border-white/20 hover:bg-white/15 transition-all duration-300"
+                    className="text-center bg-white/10 backdrop-blur-sm rounded-2xl p-3 sm:p-4 border border-white/20 hover:bg-white/15 transition-all duration-300"
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.6, delay: 1.4 + index * 0.1 }}
@@ -204,7 +204,7 @@ const AnotaAIHero = () => {
                         <IconComponent className="w-5 h-5 text-blue-400" />
                       </motion.div>
                       <div className="text-left">
-                        <div className="text-3xl font-bold text-white">
+                        <div className="text-2xl sm:text-3xl font-bold text-white">
                           <CountUp end={parseInt(stat.number.toString())} duration={2} delay={1.5 + index * 0.2} />
                           {stat.suffix}
                         </div>
@@ -241,7 +241,7 @@ const AnotaAIHero = () => {
           >
             {/* Formulário Card */}
             <motion.div 
-              className="relative bg-white/95 backdrop-blur-sm rounded-3xl shadow-2xl p-8 w-full max-w-lg mx-auto border border-gray-200/50 overflow-hidden"
+              className="relative bg-white/95 backdrop-blur-sm rounded-3xl shadow-2xl p-4 sm:p-6 lg:p-8 w-full max-w-lg mx-auto border border-gray-200/50 overflow-hidden"
               whileHover={{ scale: 1.02, y: -5 }}
               transition={{ duration: 0.3 }}
             >
@@ -275,7 +275,7 @@ const AnotaAIHero = () => {
                 <div className="relative">
                   <input
                     type="text"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300 bg-gray-50/50 backdrop-blur-sm"
+                    className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300 bg-gray-50/50 backdrop-blur-sm text-sm sm:text-base"
                     placeholder="Seu nome *"
                   />
                   <motion.div
@@ -291,7 +291,7 @@ const AnotaAIHero = () => {
                 <div className="relative">
                   <input
                     type="email"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300 bg-gray-50/50 backdrop-blur-sm"
+                    className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300 bg-gray-50/50 backdrop-blur-sm text-sm sm:text-base"
                     placeholder="Seu email pessoal *"
                   />
                   <motion.div
@@ -307,7 +307,7 @@ const AnotaAIHero = () => {
                 <div className="relative">
                   <input
                     type="tel"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300 bg-gray-50/50 backdrop-blur-sm"
+                    className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300 bg-gray-50/50 backdrop-blur-sm text-sm sm:text-base"
                     placeholder="Seu WhatsApp *"
                   />
                   <motion.div
@@ -323,7 +323,7 @@ const AnotaAIHero = () => {
                 <div className="relative">
                   <input
                     type="text"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300 bg-gray-50/50 backdrop-blur-sm"
+                    className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300 bg-gray-50/50 backdrop-blur-sm text-sm sm:text-base"
                     placeholder="Nome do seu delivery *"
                   />
                   <motion.div
@@ -380,7 +380,7 @@ const AnotaAIHero = () => {
                 {/* Botão de Envio */}
                 <motion.button
                   type="submit"
-                  className="relative w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 overflow-hidden group"
+                  className="relative w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-bold py-2.5 sm:py-3 px-6 rounded-lg transition-all duration-300 overflow-hidden group text-sm sm:text-base"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 >
@@ -412,7 +412,7 @@ const AnotaAIHero = () => {
               {/* Security Badges */}
               <div className="mt-6 pt-6 border-t border-gray-200">
                 <p className="text-xs text-gray-500 text-center mb-3">Certificações de Segurança</p>
-                <div className="flex items-center justify-center space-x-4">
+                <div className="flex items-center justify-center space-x-2 sm:space-x-4 flex-wrap gap-2">
                   <motion.div
                     className="flex items-center space-x-1 bg-green-100 px-3 py-1 rounded-full"
                     whileHover={{ scale: 1.05 }}

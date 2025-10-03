@@ -23,7 +23,7 @@ export default function Home() {
       <Header />
       
       {/* Faixa Promocional Animada */}
-      <div className="bg-blue-900 py-4 overflow-hidden relative w-full mt-20">
+      <div className="bg-blue-900 py-4 overflow-hidden relative w-full mt-16 sm:mt-20">
         <div 
           className="flex whitespace-nowrap"
           style={{
