@@ -102,7 +102,7 @@ const AnotaAIHero = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 items-center" style={{ gap: '24px' }}>
           {/* Left Column - Content */}
           <motion.div
-            className="space-y-6 lg:space-y-8 pr-0 lg:pr-8"
+            className="space-y-6 lg:space-y-8 pl-4 sm:pl-6 lg:pl-8 pr-0 lg:pr-8"
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
