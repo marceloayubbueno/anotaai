@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import CountUp from 'react-countup'
 import { Users, Clock, TrendingUp, Gift, ArrowRight, Play, Star, Zap, CheckCircle, Smartphone, Bot } from 'lucide-react'
+import Image from 'next/image'
 
 const AnotaAIHero = () => {
   const { ref, inView } = useInView({

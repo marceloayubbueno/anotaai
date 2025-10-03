@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
+import { useState } from 'react'
 import { Star, Play, Users, TrendingUp } from 'lucide-react'
 
 const AnotaAICaseSucesso = () => {
@@ -9,6 +10,8 @@ const AnotaAICaseSucesso = () => {
     threshold: 0.1,
     triggerOnce: true,
   })
+  
+  const [videoLoaded, setVideoLoaded] = useState(false)
 
   return (
     <section className="py-20 bg-white relative overflow-hidden" ref={ref}>
@@ -134,16 +137,43 @@ const AnotaAICaseSucesso = () => {
           transition={{ duration: 0.8, delay: 0.6 }}
         >
           <div className="bg-gray-100 rounded-2xl p-8 shadow-lg">
-            {/* Video Embed */}
+            {/* Video Embed with Lazy Loading */}
             <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
-              <iframe
-                className="absolute top-0 left-0 w-full h-full rounded-xl"
-                src="https://www.youtube.com/embed/LoNL5NOozyk"
-                title="Conheça como a Pizzaria Igarapé mudou a história do seu delivery com a Anota AI"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              ></iframe>
+              {!videoLoaded ? (
+                <div className="absolute top-0 left-0 w-full h-full rounded-xl bg-gray-200 flex items-center justify-center cursor-pointer group" onClick={() => setVideoLoaded(true)}>
+                  {/* Thumbnail */}
+                  <div className="relative">
+                    <img
+                      src="https://img.youtube.com/vi/LoNL5NOozyk/maxresdefault.jpg"
+                      alt="Thumbnail do vídeo"
+                      className="w-full h-full object-cover rounded-xl"
+                    />
+                    {/* Play Button Overlay */}
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <motion.div
+                        className="w-20 h-20 bg-red-600 rounded-full flex items-center justify-center shadow-2xl group-hover:bg-red-700 transition-colors"
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.95 }}
+                      >
+                        <Play className="w-8 h-8 text-white ml-1" fill="white" />
+                      </motion.div>
+                    </div>
+                    {/* Loading indicator */}
+                    <div className="absolute top-4 right-4 bg-black/70 text-white px-3 py-1 rounded-full text-sm">
+                      Clique para carregar
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <iframe
+                  className="absolute top-0 left-0 w-full h-full rounded-xl"
+                  src="https://www.youtube.com/embed/LoNL5NOozyk?autoplay=1"
+                  title="Conheça como a Pizzaria Igarapé mudou a história do seu delivery com a Anota AI"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
+              )}
             </div>
             
             {/* Video Title */}

@@ -17,14 +17,36 @@ export default function RootLayout({
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <head>
         <link rel="icon" href="/favicon.ico" />
-        {/* Google Analytics */}
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-0P6BBWC2L1"></script>
+        
+        {/* Resource Hints para Performance */}
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <link rel="preconnect" href="https://www.google-analytics.com" />
+        <link rel="preconnect" href="https://www.youtube.com" />
+        <link rel="preconnect" href="https://img.youtube.com" />
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+        <link rel="dns-prefetch" href="https://www.youtube.com" />
+        
+        {/* Preload Critical Resources */}
+        <link rel="preload" href="/images/anota ai/logo.svg" as="image" type="image/svg+xml" />
+        
+        {/* Google Analytics - Otimizado para Performance */}
         <script dangerouslySetInnerHTML={{
           __html: `
+            // Carregar GA de forma não-bloqueante
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'G-0P6BBWC2L1');
+            gtag('config', 'G-0P6BBWC2L1', {
+              'send_page_view': false
+            });
+            
+            // Carregar script após DOM
+            window.addEventListener('load', function() {
+              const script = document.createElement('script');
+              script.async = true;
+              script.src = 'https://www.googletagmanager.com/gtag/js?id=G-0P6BBWC2L1';
+              document.head.appendChild(script);
+            });
           `,
         }} />
         {/* Meta Pixel será controlado por componente client-side */}
