@@ -14,7 +14,7 @@ import ChatBotForm from '@/components/ChatBotForm'
 import ChatBot from '@/components/ChatBot'
 import { useState } from 'react'
 
-export default function Home() {
+export default function Backup() {
   const [showChat, setShowChat] = useState(false);
   const mobileStyle = typeof window !== 'undefined' && window.innerWidth <= 600
 
@@ -105,4 +105,4 @@ export default function Home() {
       )}
     </main>
   )
-} 
+}

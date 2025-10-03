@@ -3,9 +3,9 @@ import './globals.css'
 import PixelAndConsentProvider from '../components/PixelAndConsentProvider';
 
 export const metadata: Metadata = {
-  title: 'Uixweb - Desenvolvimento Web e Automações | Sites, Sistemas Web, Automações N8N e E-commerce',
-  description: 'Desenvolvemos sites profissionais, sistemas web personalizados, automações inteligentes com N8N e e-commerce completos. Soluções digitais modernas e otimizadas para impulsionar seu negócio.',
-  keywords: 'desenvolvimento web, automações, sites profissionais, sistemas web, N8N, e-commerce, sites responsivos, React, Next.js, automação de processos, agência web',
+  title: 'Anota AI - Gestão Completa para Restaurantes | Cardápio Digital, Atendente Virtual e Automações',
+  description: 'Automatize seu restaurante com a Anota AI. Cardápio digital, atendente virtual, pagamentos online e gestão completa em uma única plataforma. Teste grátis por 7 dias.',
+  keywords: 'restaurante, cardápio digital, atendente virtual, automação restaurante, gestão restaurante, pagamento online, delivery, automação, N8N, sistema restaurante',
 }
 
 export default function RootLayout({
